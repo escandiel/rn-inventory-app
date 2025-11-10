@@ -204,7 +204,7 @@ export default function SalesScreen() {
           {item.rows.map((s, idx) => (
             <TouchableOpacity
               key={s.id}
-              onPress={() => router.push(`/sales/${s.id}`)}
+              onPress={() => router.push(`/sales/${s.id}`)} //fix this route
               style={[
                 styles.row,
                 idx < item.rows.length - 1 && styles.rowDivider,
