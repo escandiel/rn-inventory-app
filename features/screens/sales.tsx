@@ -160,13 +160,11 @@ export default function SalesScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>Registro de vendas</Text>
         <Text style={styles.subtitle}>Forfeet Sneakers</Text>
       </View>
 
-      {/* Summary */}
       <View style={styles.summaryGrid}>
         <View style={[styles.summaryCard, styles.primaryCard]}>
           <Text style={styles.summaryLabelWhite}>Vendas</Text>
@@ -209,7 +207,6 @@ export default function SalesScreen() {
         </View>
       </View>
 
-      {/* Controls */}
       <View style={styles.controlsCard}>
         <View style={styles.segment}>
           <SegmentBtn label="Hoje" value="today" />

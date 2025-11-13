@@ -9,7 +9,6 @@ import { signOut } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 
 export default function DashboardScreen() {
-  // Mock Data
   const stats = {
     totalInventory: 247,
     lowStock: 8,
@@ -26,7 +25,6 @@ export default function DashboardScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      {/* Header */}
       <View style={styles.header}>
         <View>
           <Text style={styles.greeting}>Olá 👋</Text>
@@ -40,7 +38,6 @@ export default function DashboardScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Stats Cards */}
       <View style={styles.statsGrid}>
         <View style={[styles.statCard, styles.primaryCard]}>
           <Text style={styles.statLabelWhite}>Estoque Total</Text>
@@ -88,7 +85,6 @@ export default function DashboardScreen() {
         </View>
       </View>
 
-      {/* Top Products */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Mais Vendidos</Text>
         {topProducts.map((product, index) => (

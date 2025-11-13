@@ -127,7 +127,6 @@ export default function ProductDetailScreen() {
           </View>
         </View>
 
-        {/* Product Details Card */}
         <View style={styles.infoCard}>
           <Text style={styles.cardTitle}>Detalhes do Produto</Text>
 
@@ -152,7 +151,6 @@ export default function ProductDetailScreen() {
           </View>
         </View>
 
-        {/* Action Buttons */}
         <View style={styles.actionButtons}>
           <TouchableOpacity style={styles.primaryButton}>
             <Text style={styles.primaryButtonText}>Editar Produto</Text>
