@@ -12,6 +12,7 @@ import { ProductsSearchBar } from "../modules/products/components/search-bar";
 import { ProductCard } from "../modules/products/components/card";
 import { AddProductModal } from "../modules/products/components/add-product-modal";
 import { useProducts } from "../modules/products/hooks/use-product";
+import { NewProductPayload } from "../modules/products/types/new-product-payload";
 
 export default function ProductsScreen() {
   const {
@@ -25,10 +26,16 @@ export default function ProductsScreen() {
     loading,
     error,
     products,
+    reload,
   } = useProductsList();
   const { create } = useProducts();
 
   const [modalVisible, setModalVisible] = useState(false);
+
+  const handleSaveProduct = async (data: NewProductPayload) => {
+    await create(data);
+    await reload();
+  };
 
   return (
     <View style={styles.container}>
@@ -66,7 +73,7 @@ export default function ProductsScreen() {
       </ScrollView>
 
       <AddProductModal
-        onSave={create}
+        onSave={handleSaveProduct}
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
       />
