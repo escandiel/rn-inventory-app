@@ -431,5 +431,5 @@ const styles = StyleSheet.create({
     shadowRadius: 6,
     elevation: 3,
   },
-  fabText: { color: "#FFF", fontSize: 15, fontWeight: "700" },
+  fabText: { color: "#F2F2F2", fontSize: 15, fontWeight: "700" },
 });
