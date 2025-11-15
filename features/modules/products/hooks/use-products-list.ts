@@ -1,37 +1,30 @@
-import { useState, useMemo } from "react";
-import { useProducts } from "./use-product";
-import { Product } from "../types/product-model";
+import { useState } from "react";
 import { router } from "expo-router";
+import { Product } from "../types/product-model";
+import { useProducts } from "../context/product-provider";
 
 export function useProductsList() {
   const { products, loading, error, reload } = useProducts();
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredProducts = useMemo(() => {
-    const query = searchQuery.toLowerCase();
-    return products.filter(
-      (p) =>
-        p.name.toLowerCase().includes(query) ||
-        p.brand.toLowerCase().includes(query) ||
-        p.sku.toLowerCase().includes(query),
+  const query = searchQuery.toLowerCase();
+
+  const filteredProducts = products.filter((p) => {
+    return (
+      p.name.toLowerCase().includes(query) ||
+      p.brand.toLowerCase().includes(query) ||
+      p.sku.toLowerCase().includes(query)
     );
-  }, [products, searchQuery]);
+  });
 
-  const totalValue = useMemo(
-    () =>
-      products.reduce((sum, product) => sum + product.price * product.stock, 0),
-    [products],
+  const totalValue = products.reduce(
+    (sum, product) => sum + product.price * product.stock,
+    0,
   );
 
-  const totalItems = useMemo(
-    () => products.reduce((sum, product) => sum + product.stock, 0),
-    [products],
-  );
+  const totalItems = products.reduce((sum, product) => sum + product.stock, 0);
 
-  const lowStockItems = useMemo(
-    () => products.filter((product) => product.stock < 10).length,
-    [products],
-  );
+  const lowStockItems = products.filter((product) => product.stock < 10).length;
 
   function openDetails(product: Product) {
     router.push({
@@ -46,15 +39,11 @@ export function useProductsList() {
     totalValue,
     totalItems,
     lowStockItems,
-
     searchQuery,
     setSearchQuery,
-
     loading,
     error,
-
     openDetails,
-
     reload,
   };
 }

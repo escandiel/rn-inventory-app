@@ -8,8 +8,9 @@ export interface Product {
   cost: number;
   sku: string;
   color: string;
-  condition: string;
+  condition: "Novo" | "Usado";
   location: string;
+  stockDate?: string;
   createdAt: string;
   updatedAt: string;
 }

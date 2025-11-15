@@ -83,7 +83,7 @@
 // }
 import { useState } from "react";
 import { router } from "expo-router";
-import { useSales } from "../context/sale-context";
+import { useSales } from "../context/sale-provider";
 import {
   filterSalesByQuery,
   getMinDateForRange,

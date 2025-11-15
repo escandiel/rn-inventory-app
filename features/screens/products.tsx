@@ -10,9 +10,10 @@ import { useProductsList } from "../modules/products/hooks/use-products-list";
 import { ProductsHeaderStats } from "../modules/products/components/header-stats";
 import { ProductsSearchBar } from "../modules/products/components/search-bar";
 import { ProductCard } from "../modules/products/components/card";
-import { AddProductModal } from "../modules/products/components/add-product-modal";
-import { useProducts } from "../modules/products/hooks/use-product";
+
+import { useProducts } from "../modules/products/context/product-provider";
 import { NewProductPayload } from "../modules/products/types/new-product-payload";
+import { router } from "expo-router";
 
 export default function ProductsScreen() {
   const {
@@ -28,14 +29,15 @@ export default function ProductsScreen() {
     products,
     reload,
   } = useProductsList();
+
   const { create } = useProducts();
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handleSaveProduct = async (data: NewProductPayload) => {
+  async function handleSaveProduct(data: NewProductPayload) {
     await create(data);
     await reload();
-  };
+  }
 
   return (
     <View style={styles.container}>
@@ -54,9 +56,9 @@ export default function ProductsScreen() {
 
       <TouchableOpacity
         style={styles.addButton}
-        onPress={() => setModalVisible(true)}
+        onPress={() => router.push("/product-modal")}
       >
-        <Text style={styles.addButtonText}>+ Adicionar Produto</Text>
+        <Text style={styles.addButtonText}>+ Novo Produto</Text>
       </TouchableOpacity>
 
       <ScrollView style={styles.productsList}>
@@ -71,12 +73,6 @@ export default function ProductsScreen() {
           </View>
         )}
       </ScrollView>
-
-      <AddProductModal
-        onSave={handleSaveProduct}
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-      />
     </View>
   );
 }

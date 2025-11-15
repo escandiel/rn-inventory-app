@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { router } from "expo-router";
-import { useSales } from "../context/sale-context";
+import { useSales } from "../context/sale-provider";
 
 export function useSaleDetail(id: string) {
   const { sales, loading, error, remove } = useSales();

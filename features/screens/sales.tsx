@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import { useSalesList } from "../modules/sales/hooks/use-sales-list";
-import { useSales } from "../modules/sales/context/sale-context";
+import { useSales } from "../modules/sales/context/sale-provider";
 import { Header } from "../modules/sales/components/header";
 import { SummaryCards } from "../modules/sales/components/summary-card";
 import { ControlsCard } from "../modules/sales/components/controls-card";
