@@ -58,9 +58,6 @@ export function ControlsCard({
           onChangeText={setQuery}
           style={styles.searchInput}
         />
-        <TouchableOpacity onPress={() => {}} style={styles.calendarBtn}>
-          <Text style={styles.calendarText}>📅</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
